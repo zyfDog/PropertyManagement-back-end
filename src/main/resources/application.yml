@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  max-http-header-size: 10000000
+
+#设置提供的服务名
+spring:
+  application:
+    name: sms
+  #配置数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/PropertyManagement?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+
+  #redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: -1
+        max-wait: -1
+        max-idle: 10000
+        min-idle: 0
+    timeout: 2000
+
+
+mybatis-plus:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.management.core.entity
+
+# log日志
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml
+
+
